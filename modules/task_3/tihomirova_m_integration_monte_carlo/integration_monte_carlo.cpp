@@ -13,7 +13,6 @@ double getIntegralTBB(int n, const std::vector<double>& low, const std::vector<d
     throw "integration limits are empty";
   if (n <= 0)
     throw "number points <= 0";
-  double res = 0.0;
   std::mt19937 gen;
   gen.seed(static_cast<unsigned int>(time(0)));
   int dimension = static_cast<int>(low.size());
