@@ -1,5 +1,6 @@
 // Copyright 2020 Tihomirova Mariya
 #include <vector>
+#include <functional>
 #include <random>
 #include <ctime>
 #include "../../../modules/task_3/tihomirova_m_integration_monte_carlo/integration_monte_carlo.h"
