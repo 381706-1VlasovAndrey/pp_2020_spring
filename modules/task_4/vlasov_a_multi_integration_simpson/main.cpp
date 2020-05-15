@@ -26,41 +26,41 @@ std::function<double(const std::vector<double>&)> f5 = [](const std::vector<doub
 
 TEST(multi_integration_simpson, test1_n_is_negative) {
   double a = 0.0, b = 3.0;
-  ASSERT_ANY_THROW(getIntegralSimpsonTBB(f1, { a }, { b }, -1000, 4));
+  ASSERT_ANY_THROW(getIntegralSimpsonThread(f1, { a }, { b }, -1000));
 }
 
 TEST(multi_integration_simpson, test2_multiplicity_is_1) {
   double a = 0.0, b = 3.0;
-  double res = getIntegralSimpsonTBB(f1, { a }, { b }, 10000);
+  double res = getIntegralSimpsonThread(f1, { a }, { b }, 1000);
   ASSERT_NEAR(res, 9.0, 1e-5);
 }
 
 TEST(multi_integration_simpson, test3_multiplicity_is_2) {
   std::vector<double>a = { 0.0, 2.5 };
   std::vector<double>b = { 1.534, 3.12 };
-  double res = getIntegralSimpsonTBB(f2, a, b, 10000);
+  double res = getIntegralSimpsonThread(f2, a, b, 1000);
   ASSERT_NEAR(res, 17.65544267, 1e-5);
 }
 
 TEST(multi_integration_simpson, test4_multiplicity_is_3version_1) {
   std::vector<double>a = { -1.0, -2.0, -3.0 };
   std::vector<double>b = { 1.0, 3.0, 5.0 };
-  double res = getIntegralSimpsonTBB(f3, a, b, 10000);
+  double res = getIntegralSimpsonThread(f3, a, b, 1000);
   ASSERT_NEAR(res, 120.0, 1e-5);
 }
 
 TEST(multi_integration_simpson, test5_multiplicity_is_3_version_2) {
   std::vector<double>a = { 0.0, 2.5, 1.234 };
   std::vector<double>b = { 1.534, 3.12, 1.555 };
-  double res = getIntegralSimpsonTBB(f4, a, b, 10000);
+  double res = getIntegralSimpsonThread(f4, a, b, 1000);
   ASSERT_NEAR(res, 2.50377645, 1e-5);
 }
 
 TEST(multi_integration_simpson, test6_multiplicity_is_3_version_3) {
   std::vector<double>a = { 0.0, -10.0, 1.0 };
   std::vector<double>b = { 5.0, 10.0, 17.0 };
-  double res = getIntegralSimpsonTBB(f5, a, b, 10000);
-  ASSERT_NEAR(res, 230400, 1);
+  double res = getIntegralSimpsonThread(f5, a, b, 1000);
+  ASSERT_NEAR(res, 230400, 1e-5);
 }
 
 int main(int argc, char** argv) {
