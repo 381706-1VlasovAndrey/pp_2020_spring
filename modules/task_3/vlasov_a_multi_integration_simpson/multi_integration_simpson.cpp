@@ -31,8 +31,7 @@ double getIntegralSimpsonTBB(const std::function<double(const std::vector<double
       }
       if ((local_n * i) % 2 == 0) {
         sum[i] = getSum(f, local_a, local_b, local_n);
-      }
-      else {
+      } else {
         sum[i] = getSum_odd(f, local_a, local_b, local_n);
       }
     });
@@ -45,8 +44,7 @@ double getIntegralSimpsonTBB(const std::function<double(const std::vector<double
       }
       if ((local_n * num_threads) % 2 == 0) {
         sum[num_threads] += getSum(f, local_a, b, n % num_threads);
-      }
-      else {
+      } else {
         sum[num_threads] += getSum_odd(f, local_a, b, n % num_threads);
       }
     });
